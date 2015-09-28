@@ -1,0 +1,34 @@
+<ion-pane>
+<ion-header-bar class="bar-stable">
+<h1 class="title">Register</h1>
+</ion-header-bar>
+<ion-content >
+<form name="form_register"  ng-submit="submitDetails(user)" novalidate=""> 
+    <div class="list">
+        <label class="item item-input item-floating-label" style="position:relative;">
+            <span class="input-label">First Name</span>
+            <input type="text" placeholder="First Name" ng-model="user.name" ng-required="true" name="firstName">
+            <p ng-show="form_register.firstName.$invalid && !form_register.firstName.$pristine" class="help-block">You name is required.</p>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="email" placeholder="Email" ng-model="user.email" ng-required="true" name="email">
+            <p ng-show="form_register.email.$invalid && !form_register.email.$pristine" class="help-block">Enter a valid email</p>
+        </label>
+        <input type="number" name="user_phone" placeholder="Phone No" ng-model="user.phone" ng-minlength="10" ng-maxlength="10" ng-required="true">
+        <!-- <span class="help-block" ng-show="form_register.user_phone.$error.required || form_register.user_phone.$error.number">Valid phone number is required</span> -->
+        <span class="help-block" ng-show="form_register.user_phone.$invalid && !form_register.user_phone.$pristine">Valid phone number is required</span>
+        <span class="help-block" ng-show="((form_register.user_phone.$error.minlength || form_register.user_phone.$error.maxlength) && form_register.user_phone.$dirty) ">phone number should be 10 digits</span>
+        <label class="item item-input item-floating-label" style="position:relative;">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="Password" ng-model="user.password" ng-required="true" name="password">
+            <p ng-show="form_register.password.$invalid && !form_register.password.$pristine" class="help-block">You paswword is required.</p>
+        </label>
+        <input type="submit" class="button button-royal"  value="register"  ng-disabled="form_register.$invalid">
+    </div>
+</form>
+<button class="button button-positive" ui-sref="login">
+   login
+</button>
+</ion-content>
+</ion-pane>

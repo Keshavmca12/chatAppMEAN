@@ -1,0 +1,54 @@
+<!-- <div class="container">
+   <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Welcome {{sender.name}}</h1>
+      <h2 class="page-header">Messages:</h2>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="message in messagesList">
+        <li><a href="#" tooltip="{{message.time}}">{{message.text}}<button type="button" class="close" ng-click="deleteMessage(message)">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Send message</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Enter ur message" ng-model="message.text">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="sendMessage(message.text)">Send</button>
+      </span>
+    </p>
+  </form>
+</div> -->
+<ion-view view-title="Chats">
+
+<ion-content class="padding">
+<ion-header-bar class="bar-stable">
+<h1 class="title">welcome {{sender.name}}</h1>
+</ion-header-bar>
+<section class="chats">
+  <br>
+  <span ng-repeat="message in messagesList">
+   <span ng-class="getUserClass(message.sender)"> 
+    <span ng-show="sender._id==message.sender">{{sender.name}}</span> 
+   <span ng-show="reciever._id==message.sender">{{reciever.name}}</span> </span> {{message.text}} <br>
+ </span>
+
+</section>
+
+</ion-content>
+
+<form name="sendMessageForm" ng-submit="sendMessage(message.text)" novalidate>
+  <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+  <label class="item-input-wrapper">
+    <input id="msg-input" ng-change="updateTyping()" ng-model="message.text" class="input-message" type="text" placeholder="Message">
+  </label>
+  <div class="footer-btn-wrap">
+    <button class="button button-icon icon ion-ios-paperplane footer-btn" type="submit"
+    ng-disabled="!message.text || message.text === ''" >
+  </button>
+</div>
+</ion-footer-bar>
+</form>
+
+</ion-view>
+

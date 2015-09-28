@@ -1,0 +1,12 @@
+<!-- <ul class="list-group">
+	<li class="list-group-item" >{{$index+1}}.{{user.name}}</li>
+</ul>
+-->
+<div class="list">
+
+	<span class="item item-avatar" ng-repeat="user in users">
+		<!-- <img src="venkman.jpg"> -->
+		<h2>{{user.name}}</h2><!-- <span class="ion-checkmark" ng-show="!isSendeActivated" ng-click="activateSender(user)"></span> --><span ng-show="user.id==activeUser.id" class="ion-checkmark-circled"></span>
+		<p ng-click="openChat(user)" ng-hide="user.id==activeUser.id">click  here to start chat</p>
+	</span>
+</div>
